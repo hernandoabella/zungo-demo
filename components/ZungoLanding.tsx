@@ -13,6 +13,9 @@ const heroCss = `
 .float-wa:hover{transform:translateY(-3px);box-shadow:0 12px 40px #000c}
 .float-wa svg{flex-shrink:0}
 
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
 .order-band{position:relative;overflow:hidden}
 .order-band:before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:#ffffff26;top:-50px;right:-40px;pointer-events:none}
 .order-band:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:#ffffff1a;bottom:-35px;left:-25px;pointer-events:none}
@@ -25,7 +28,7 @@ const heroCss = `
   .footer-grid{flex-direction:column;align-items:center;text-align:center;gap:24px}
   .footer-copy{max-width:100%;margin:0}
   .footer-links{justify-content:center;gap:16px}
-  .brand-logo{margin:0 auto;max-width:180px;max-height:56px}
+  .brand-logo{margin:0 auto 12px;max-width:180px;max-height:56px}
   .copyright{margin-top:24px;font-size:.75rem}
 }
 
@@ -49,8 +52,8 @@ const heroCss = `
 }
 
 @media (max-width: 480px){
-  .brand-logo{max-width:140px;margin:0 auto 12px}
-  .footer-copy{font-size:.85rem}
+  .brand-logo{max-width:130px;margin:0 auto 12px}
+  .footer-copy{display:block;margin:8px 0 0}
   .footer-links{flex-direction:column;gap:8px}
   .copyright{font-size:.7rem}
 }
@@ -121,8 +124,6 @@ img{max-width:100%}
   .hero-image{text-align:center}
   .hero-image img{max-height:320px !important;border-radius:18px}
   .image-label{left:50%;transform:translateX(-50%) rotate(-3deg);bottom:12px}
-  .logo{position:absolute;left:50%;transform:translateX(-50%)}
-  .nav{position:relative}
   .hero h1{font-size:clamp(2.6rem,14vw,3.6rem)}
 }
 
@@ -181,6 +182,7 @@ export default function ZungoLanding() {
       document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
       function attachZoom(){document.querySelectorAll('.product-photo img,.gallery-grid img,.ingredient-card img').forEach(function(img){img.addEventListener('click',function(){openLightbox(img.src);});});}
       if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',attachZoom);}else{attachZoom();}
+      (function(){var els=document.querySelectorAll('section,.product-card,.value,.step,.ingredient-card');els.forEach(function(e){e.classList.add('reveal');});var io=new IntersectionObserver(function(entries){entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.12});els.forEach(function(e){io.observe(e);});})();
       document.addEventListener('click',function(e){var nav=document.getElementById('navlinks');var toggle=document.querySelector('.menu-toggle');if(nav && nav.classList.contains('open') && (!nav.contains(e.target)) && (!toggle || !toggle.contains(e.target))){nav.classList.remove('open');}});
       (function(){var heroImg=document.querySelector('.hero-image img');if(!heroImg)return;var ticking=false;window.addEventListener('scroll',function(){if(ticking)return;ticking=true;requestAnimationFrame(function(){heroImg.style.transform='translateY('+(window.scrollY*0.12)+'px)';ticking=false;});},{passive:true});})();
     `;
