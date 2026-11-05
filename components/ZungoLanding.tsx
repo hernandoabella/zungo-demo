@@ -13,6 +13,10 @@ const heroCss = `
 .float-wa:hover{transform:translateY(-3px);box-shadow:0 12px 40px #000c}
 .float-wa svg{flex-shrink:0}
 
+header{position:fixed !important;top:0;left:0;right:0;z-index:50}
+main{padding-top:76px}
+@media (max-width: 800px){main{padding-top:64px}}
+
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 
@@ -141,7 +145,7 @@ img{max-width:100%}
   .qty-btn{width:26px;height:26px;font-size:.9rem}
 }
 @media (max-width: 800px){
-  .nav{min-height:64px;gap:12px}
+  .nav{min-height:64px;gap:12px;flex-wrap:wrap;justify-content:center}
   .nav-actions{gap:8px}
   .cart-pill{padding:8px 12px;font-size:.82rem}
   .cart-pill svg{width:16px;height:16px;margin-right:4px}
