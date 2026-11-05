@@ -12,12 +12,75 @@ const heroCss = `
 .float-wa{display:inline-flex;align-items:center;gap:4px;padding:14px 20px;border-radius:999px;transition:transform .2s,box-shadow .2s}
 .float-wa:hover{transform:translateY(-3px);box-shadow:0 12px 40px #000c}
 .float-wa svg{flex-shrink:0}
+
+@media (max-width: 800px){
+  .nav{flex-wrap:wrap;justify-content:center;gap:8px}
+  .logo{position:static;transform:none;flex:0 0 100%;text-align:center;margin:0}
+  .nav-actions{flex:0 0 100%;display:flex;justify-content:space-between;gap:10px;margin-top:100px}
+  .logo{margin-bottom:4px}
+  .cart-pill{flex:1 1 0;display:inline-flex;justify-content:center}
+  .menu-toggle{flex:1 1 0;max-width:72px}
+}
+
+@media (max-width: 800px){
+  .hero{padding:48px 0 56px}
+  .hero h1{text-align:center}
+  .hero-copy{text-align:center;margin:0 auto}
+  .hero-buttons{justify-content:center}
+  .hero-note{justify-content:center}
+  .hero-image{text-align:center}
+  .hero-image img{max-height:320px !important;border-radius:18px}
+  .image-label{left:50%;transform:translateX(-50%) rotate(-3deg);bottom:12px}
+  .nav{position:relative}
+  .logo{position:absolute;left:50%;transform:translateX(-50%)}
+}
 .kicker::before{content:"";display:inline-block;width:12px;height:12px;margin-right:8px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b5ed35'%3E%3Cpath d='M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4 5.7 20.8 8 13.6 2 9.2h7.6z'/%3E%3C/svg%3E") no-repeat center/contain;vertical-align:middle}
 
 .cart-pill{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .cart-pill svg{flex-shrink:0}
 .toast{bottom:96px;max-width:90vw;text-align:center;line-height:1.4}
-.add-btn{width:100%;margin-top:14px}
+.add-btn{width:100%;margin-top:100px}
+
+html,body{overflow-x:hidden}
+img{max-width:100%}
+.hero-image img{max-width:100% !important}
+.cart-panel{width:100% !important;max-width:100vw}
+@media (max-width: 800px){
+  .wrap{width:94% !important}
+  .nav{flex-wrap:wrap}
+  .nav-actions{width:100%;justify-content:space-between}
+  .hero-grid{grid-template-columns:1fr !important;gap:20px}
+  .hero-image{margin:0}
+  .hero-image img{max-height:360px !important}
+  .manifesto-grid{grid-template-columns:1fr !important}
+  .values{grid-template-columns:1fr !important}
+  .steps{grid-template-columns:1fr !important}
+  .gallery-grid{grid-template-columns:1fr !important}
+  .ingredient-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+  .footer-grid{flex-direction:column !important;gap:20px}
+  .order-band-inner{flex-direction:column !important;align-items:flex-start !important}
+  .float-wa{right:12px;bottom:12px;padding:12px 16px;font-size:.85rem}
+  .toast{left:12px;right:12px;transform:none;max-width:none}
+}
+@media (max-width: 480px){
+  .ingredient-grid{grid-template-columns:1fr !important}
+  .product-photo img{height:240px !important}
+  .gallery-grid img{height:240px !important}
+  .menu-grid{grid-template-columns:1fr !important}
+  .product-card{width:100%}
+
+  .hero{padding:48px 0 56px}
+  .hero h1{font-size:clamp(2.8rem,13vw,4rem);text-align:center}
+  .hero-copy{text-align:center;margin:0 auto}
+  .hero-buttons{justify-content:center}
+  .hero-note{justify-content:center}
+  .hero-image{text-align:center}
+  .hero-image img{max-height:320px !important;border-radius:18px}
+  .image-label{left:50%;transform:translateX(-50%) rotate(-3deg);bottom:12px}
+  .logo{position:absolute;left:50%;transform:translateX(-50%)}
+  .nav{position:relative}
+  .hero h1{font-size:clamp(2.6rem,14vw,3.6rem)}
+}
 
 .cart-item{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
 .qty-badge{width:36px;height:36px;border-radius:50%;background:var(--lime);color:#111;display:flex;align-items:center;justify-content:center;font-weight:1000;font-size:1rem;flex-shrink:0;box-shadow:0 4px 12px #b5ed3544}
@@ -42,6 +105,7 @@ const heroCss = `
   .hero-grid{gap:24px}
   .hero-image img{max-height:420px !important}
   .section-head h2{letter-spacing:-1px}
+  .section-head h2{font-size:clamp(1.7rem,7vw,2.4rem) !important}
   .product-photo img{height:260px}
   .gallery-grid img{height:240px}
   .lightbox img{max-width:96vw;max-height:80vh}
