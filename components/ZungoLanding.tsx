@@ -56,7 +56,7 @@ const heroCss = `
 .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:100;align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
 .lightbox.open{display:flex}
 .lightbox img{max-width:92vw;max-height:92vh;border-radius:18px;box-shadow:0 30px 100px #000;object-fit:contain}
-.product-photo img,.gallery-grid img{cursor:zoom-in}
+.product-photo img,.gallery-grid img,.ingredient-card img{cursor:zoom-in}
 `;
 
 export default function ZungoLanding() {
@@ -71,7 +71,7 @@ export default function ZungoLanding() {
       function openLightbox(src){var lb=document.getElementById('lightbox');var im=document.getElementById('lightboxImg');im.src=src;lb.classList.add('open');document.body.style.overflow='hidden';}
       function closeLightbox(){var lb=document.getElementById('lightbox');lb.classList.remove('open');document.body.style.overflow='';}
       document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
-      function attachZoom(){document.querySelectorAll('.product-photo img,.gallery-grid img').forEach(function(img){img.addEventListener('click',function(){openLightbox(img.src);});});}
+      function attachZoom(){document.querySelectorAll('.product-photo img,.gallery-grid img,.ingredient-card img').forEach(function(img){img.addEventListener('click',function(){openLightbox(img.src);});});}
       if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',attachZoom);}else{attachZoom();}
     `;
     document.body.appendChild(extra);
