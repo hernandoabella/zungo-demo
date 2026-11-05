@@ -13,33 +13,77 @@ const heroCss = `
 .float-wa:hover{transform:translateY(-3px);box-shadow:0 12px 40px #000c}
 .float-wa svg{flex-shrink:0}
 
+.order-band{position:relative;overflow:hidden}
+.order-band:before{content:"";position:absolute;width:140px;height:140px;border-radius:50%;background:#ffffff26;top:-50px;right:-40px;pointer-events:none}
+.order-band:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;background:#ffffff1a;bottom:-35px;left:-25px;pointer-events:none}
+.hero{position:relative}
+.hero:before{pointer-events:none}
+@media (max-width: 480px){.cart-label{display:none}}
+
 @media (max-width: 800px){
-  .nav{flex-wrap:wrap;justify-content:center;gap:8px}
-  .logo{position:static;transform:none;flex:0 0 100%;text-align:center;margin:0}
-  .nav-actions{flex:0 0 100%;display:flex;justify-content:space-between;gap:10px;margin-top:100px}
-  .logo{margin-bottom:4px}
-  .cart-pill{flex:1 1 0;display:inline-flex;justify-content:center}
-  .menu-toggle{flex:1 1 0;max-width:72px}
+  footer{padding:40px 0 24px}
+  .footer-grid{flex-direction:column;align-items:center;text-align:center;gap:24px}
+  .footer-copy{max-width:100%;margin:0}
+  .footer-links{justify-content:center;gap:16px}
+  .brand-logo{margin:0 auto;max-width:180px;max-height:56px}
+  .copyright{margin-top:24px;font-size:.75rem}
 }
+
+@media (max-width: 480px){
+  .hero h1{font-size:clamp(1.7rem,10vw,2.3rem) !important;line-height:.95}
+  .hero-copy{font-size:.88rem !important}
+  .hero-image img{max-height:240px !important}
+}
+
+@media (max-width: 800px){
+  .hero{padding:40px 0 48px}
+  .hero-grid{grid-template-columns:1fr;gap:24px;align-items:center}
+  .hero h1{font-size:clamp(2rem,11vw,2.8rem);line-height:.9;text-align:center;margin:16px 0 18px}
+  .hero-copy{font-size:.92rem;line-height:1.6;text-align:center;max-width:92%;margin:0 auto}
+  .hero-buttons{flex-direction:column;align-items:stretch;gap:10px;margin-top:20px}
+  .hero-buttons .btn{width:100%;justify-content:center}
+  .hero-note{justify-content:center;font-size:.8rem;text-align:center}
+  .hero-image{margin:0 auto;max-width:92%}
+  .hero-image img{max-height:280px !important;border-radius:16px}
+  .image-label{position:absolute;bottom:10px;left:50%;transform:translateX(-50%) rotate(-3deg);font-size:.75rem !important;padding:8px 14px !important;border-radius:10px !important}
+}
+
+@media (max-width: 480px){
+  .brand-logo{max-width:140px;margin:0 auto 12px}
+  .footer-copy{font-size:.85rem}
+  .footer-links{flex-direction:column;gap:8px}
+  .copyright{font-size:.7rem}
+}
+.menu-close{display:none}
+@media (max-width: 800px){
+  .menu-close{display:flex;position:fixed;top:18px;right:20px;width:46px;height:46px;border-radius:50%;border:1px solid #ffffff44;background:#171317;color:#fff;font-size:1.6rem;align-items:center;justify-content:center;cursor:pointer;z-index:70;box-shadow:0 6px 20px #0008;transition:background .15s,transform .15s}
+  .menu-close:hover{background:var(--pink);border-color:var(--pink);transform:scale(1.05)}
+  .navlinks{position:fixed !important;top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;width:100vw !important;height:100vh !important;background:#090909f2;backdrop-filter:blur(12px);z-index:60 !important;display:flex !important;flex-direction:column;align-items:center;justify-content:center;gap:24px;padding:24px;overflow:auto;opacity:0;pointer-events:none;transform:scale(.98);transition:opacity .2s ease,transform .2s ease;will-change:opacity,transform}
+  .navlinks.open{opacity:1 !important;pointer-events:auto !important;transform:scale(1) !important}
+  .navlinks a{font-size:1.4rem}
+}
+
 
 @media (max-width: 800px){
   .hero{padding:48px 0 56px}
   .hero h1{text-align:center}
+  .kicker{text-align:center}
+  .hero-copy{font-size:.95rem !important;line-height:1.6 !important}
+  .hero-note{font-size:.8rem !important}
+  .hero-buttons .btn{padding:12px 18px;font-size:.9rem}
   .hero-copy{text-align:center;margin:0 auto}
   .hero-buttons{justify-content:center}
   .hero-note{justify-content:center}
   .hero-image{text-align:center}
   .hero-image img{max-height:320px !important;border-radius:18px}
   .image-label{left:50%;transform:translateX(-50%) rotate(-3deg);bottom:12px}
-  .nav{position:relative}
-  .logo{position:absolute;left:50%;transform:translateX(-50%)}
 }
 .kicker::before{content:"";display:inline-block;width:12px;height:12px;margin-right:8px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b5ed35'%3E%3Cpath d='M12 2l2.4 7.2H22l-6 4.4 2.3 7.2L12 16.4 5.7 20.8 8 13.6 2 9.2h7.6z'/%3E%3C/svg%3E") no-repeat center/contain;vertical-align:middle}
 
 .cart-pill{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 .cart-pill svg{flex-shrink:0}
 .toast{bottom:96px;max-width:90vw;text-align:center;line-height:1.4}
-.add-btn{width:100%;margin-top:100px}
+.add-btn{width:100%;margin-top:12px;margin-bottom:8px}
 
 html,body{overflow-x:hidden}
 img{max-width:100%}
@@ -137,6 +181,8 @@ export default function ZungoLanding() {
       document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
       function attachZoom(){document.querySelectorAll('.product-photo img,.gallery-grid img,.ingredient-card img').forEach(function(img){img.addEventListener('click',function(){openLightbox(img.src);});});}
       if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',attachZoom);}else{attachZoom();}
+      document.addEventListener('click',function(e){var nav=document.getElementById('navlinks');var toggle=document.querySelector('.menu-toggle');if(nav && nav.classList.contains('open') && (!nav.contains(e.target)) && (!toggle || !toggle.contains(e.target))){nav.classList.remove('open');}});
+      (function(){var heroImg=document.querySelector('.hero-image img');if(!heroImg)return;var ticking=false;window.addEventListener('scroll',function(){if(ticking)return;ticking=true;requestAnimationFrame(function(){heroImg.style.transform='translateY('+(window.scrollY*0.12)+'px)';ticking=false;});},{passive:true});})();
     `;
     document.body.appendChild(extra);
     return () => {
